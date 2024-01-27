@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  ]
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
+
+  <title>
+    Printer Page
+  </title>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <img class="logoImg" src="assets/Unlimit3DLogo001.png" alt="Unlimit3DLogo001.png" width="80" height="55">
+    <h4 class="logo">Unlimit3D</h4>
+    <a class="notif" role="button" (click)="openNotify()">
+      <span class="glyphicon glyphicon-bell" style="font-size:15px"></span>
+    </a>
+    <a class="user" role="button" (click)="openProfileModal()">
+      <span class="glyphicon glyphicon-user" style="font-size:15px"></span>
+    </a>
+    <a class="sign-out" role="button" (click)="signOut()">
+      <span class="fa fa-sign-out" style="font-size:20px"></span>
+    </a>
+  </div>
+
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+
+
+
+  <!--<div class="btn-order">
+    <button class="orders" (click)="openDialog()">Accept/Refuse order</button>
+    <button class="orders" (click)="openMyOrders()">My orders</button>
+  </div>-->
+
+
+  <!--<br />-->
+
+  <div class="content" style="background-color: #eae3c0;">
+
+    <div class="row">
+      <div class="column" style="background-color:#eae3c0;">
+        <h2 style="align-content: center; font-size: 30px;">Accept/refuse Orders</h2>
+
+        <div *ngFor="let owner of owners" style="background-color:#ffffff; font-size: 20px;">
+          <div *ngIf="owner != null">
+            <div *ngFor="let order of orders">
+              <div *ngIf="order != null">
+                <div *ngIf="order.Direct == true && owner.id == order.Possible && order.DirectOrder != 2 && order.DoneOrders != owner.id">
+                  <h5>
+                    <div role="button" (click)="openInfoModal(order.id)">{{order.Title}}<h7> (click on tile to view details)</h7></div>
+                    <button style="background-color:#a7c584; display :inline block" mat-button
+                      (click)='openPriceModal(order.id, owner.id)'>
+                      <!--Accept--> &#10003;
+                    </button>
+                    <button style="display :inline block" mat-button (click)='Rejected(order.id, owner.id)'>
+                      <!--Decline--> &#10007;
+                    </button>
+                  </h5>
+                </div>
+                <div *ngIf="checkorder(order, owner.id) == false">
+                  <h5>
+                    <div role="button" (click)="openInfoModal(order.id)">{{order.Title}}<h7> (click on tile to view details)</h7></div>
+                    <button style="background-color:#a7c584; display :inline block" mat-button
+                      (click)='openPriceModal(order.id, owner.id)'>
+                      <!--Accept--> &#10003;
+                    </button>
+                    <button style="display :inline block" mat-button (click)='Rejected(order.id, owner.id)'>
+                      <!--Decline--> &#10007;
+                    </button>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column" style="background-color:#eae3c0;">
+        <h2 style="align-content: center; font-size: 30px;">My Orders</h2>
+        <div *ngFor="let order of orders1" style="background-color:#ffffff;">
+          <div *ngFor="let orderSub of ordersSub">
+            <div *ngIf="order.id == orderSub.OrderId">
+              <div *ngIf="orderSub.Notification == 3">
+                <h5  role="button" style="font-size: 20px;" (click)="openInfoModal(order.id)">{{order.Title}}</h5><h7>(click on tile to view details)</h7>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gol" style="height: 450px;">
+    </div>
+
+
+    <div class="footer">
+      <table>
+        <tr>
+          <td>
+            <h5 class="copyright">&#169; Copyright The Deviants</h5>
+          </td>
+          <td class="puncte">
+            ......
+          </td>
+          <td class="fb">
+            <a href="https://www.facebook.com/Unlimit3D-106213847850367" title="Facebook" target="_blank" class="fb"
+              style="font-size:15px"><i class="fa fa-facebook"></i></a>
+          </td>
+          <td class="puncte">
+            ......
+          </td>
+          <td class="insta">
+            <a href="https://www.instagram.com/deviants_ra003/" title="Instagramr" target="_blank" class="insta"
+              style="font-size:15px"><i class="fa fa-instagram"></i></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

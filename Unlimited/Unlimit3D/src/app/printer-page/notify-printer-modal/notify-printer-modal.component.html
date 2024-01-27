@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <input type="text" style="display:none" />
+  <h4 class="modal-title">My Orders</h4>
+  <button type="button" class="close" mat-button mat-dialog-close aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div *ngFor="let order of orders">
+    <div *ngFor="let orderSub of ordersSub">
+      <div *ngIf="orderSub.Notification != 3 ">
+        <div *ngIf="orderSub.OrderId == order.id ">
+          <div *ngFor="let client of clients">
+            <div *ngIf="order.IDClient == client.id ">
+              <div *ngIf="(orderSub.Notification == 1) || (orderSub.Notification == 0 && order.IDOwner != '' )">
+                <p>
+                  {{client.FirstName}} {{client.LastName}} has rejected {{order.Title}} with the price of
+                  {{orderSub.Price}}
+                  <button style="display :inline block" mat-button
+                    (click)='Rejected(order.id, orderSub.id)'>&#10007;</button>
+                </p>
+              </div>
+              <div *ngIf="order.IDOwner == data.id">
+                <p>
+                  {{client.FirstName}} {{client.LastName}} has accepted {{order.Title}} with the price of
+                  {{orderSub.Price}}
+                  <button style="display :inline block" mat-button
+                    (click)='Rejected(order.id, orderSub.id)'>&#10007;</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

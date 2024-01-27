@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <input type="text" style="display:none" />
+    <h4 class="modal-title">Your description</h4>
+    <button type="button" class="close" mat-button mat-dialog-close aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+      <div *ngFor="let client of clients">
+        <p class="textMare">Id:</p>
+          <p class="textMic"> {{client.id }}</p>
+        <p class="textMare">First name:</p>
+          <p class="textMic"> {{client.FirstName}}</p>
+        <p class="textMare">Last name:</p>
+          <p class="textMic"> {{client.LastName}}</p>
+        <p class="textMare">E-mail:</p>
+          <p class="textMic"> {{client.Email}}</p>
+          
+      </div>
+    
+  </div>
+  
+  <div class="modal-footer" align=right>
+    <mat-dialog-actions style="font-size: 16px">
+      <button id="btn" mat-button mat-dialog-close (click)="openDialog()">Change description</button>
+    </mat-dialog-actions>
+  </div>
+  

@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <input type="text" style="display:none" />
+  <h4 class="modal-title">Your description</h4>
+  <button type="button" class="close" mat-button mat-dialog-close aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div *ngFor="let owner of owners">
+    <img style="float: right;" src="{{owner.ImageURL}}" alt="Girl in a jacket" width="250" height="250">
+    
+    <p class="textMare">Description:</p>
+    <p class="textMic"> {{owner.Description}}</p>
+    <p class="textMare">First name:</p>
+    <p class="textMic"> {{owner.FirstName}}</p>
+    <p class="textMare">Last name:</p>
+    <p class="textMic"> {{owner.LastName}}</p>
+    <p class="textMare">E-mail:</p>
+    <p class="textMic"> {{owner.Email}}</p>
+    <p class="textMare">Rating:</p>
+    <div *ngIf="owner.Rating<1">
+      The user has no registered ratings
+    </div>
+    <div *ngIf="owner.Rating >= 1">
+      <div class="ratings">
+        <div class="empty-stars"></div>
+        <div class="full-stars" [ngStyle]="{'width': setPercentage(owner.Rating) }"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-footer" align=right>
+  <mat-dialog-actions style="font-size: 16px">
+    <button id="btn" mat-button mat-dialog-close (click)="openDialog()">Change description</button>
+  </mat-dialog-actions>
+</div>

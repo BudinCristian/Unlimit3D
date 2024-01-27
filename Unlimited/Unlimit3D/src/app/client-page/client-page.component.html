@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
+
+  <title>
+    Client Page
+  </title>
+</head>
+
+<body>
+  <div class="navbar">
+    <img class="logoImg" src="assets/Unlimit3DLogo001.png" alt="Unlimit3DLogo001.png" width="80" height="55">
+    <h4 class="logo">Unlimit3D</h4>
+    <a class="notif" role="button" (click)="openNotify()">
+      <span class="glyphicon glyphicon-bell" style="font-size:15px"></span>
+    </a>
+    <a role="button"  (click)="openProfileModal()" class="user">
+      <span class="glyphicon glyphicon-user" style="font-size:15px"></span>
+    </a>
+    <a  class="sign-out" role="button" (click)="signOut()" >
+      <span class="fa fa-sign-out" style="font-size:20px"></span>
+    </a>
+  </div>
+
+  <!--<div class="w3-content w3-display-container">
+    <img class="mySlides" src="data:image/jpeg;base64,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">
+    <img class="mySlides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfW0kiQSgf4ARtkyCnILNGOG_FOu3oZ7SLmQ&usqp=CAU">
+    <img class="mySlides" src="stuff.jpg">
+    <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+  </div>
+  <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = x.length };
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      x[slideIndex - 1].style.display = "block";
+    }
+  </script>-->
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="carousel-area">
+  <app-carousel-client></app-carousel-client>
+  </div>
+
+  <mat-grid-list cols="5" rowHeight="7:1">
+    <mat-grid-tile><a href="https://www.thingiverse.com/" class="model" target="_blank">Thingiverse</a></mat-grid-tile>
+    <mat-grid-tile><a href="https://cults3d.com/en" class="model" target="_blank">Cults</a></mat-grid-tile>
+    <mat-grid-tile><a href="https://www.myminifactory.com/" class="model" target="_blank">MyMiniFactory</a></mat-grid-tile>
+    <mat-grid-tile><a href="https://pinshape.com/" class="model" target="_blank">Pinshape</a></mat-grid-tile>
+    <mat-grid-tile><a href="https://www.yeggi.com//" class="model" target="_blank">Yeggi</a></mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="btn-order">
+    <button class="orders" (click)="openDialog()">Place order</button>
+    <button class="orders" (click)="openMyOrders()">My orders</button>
+  </div>
+
+
+  <div class="top3">
+
+    <!--<h1 style="text-align: center">Top 3</h1>
+    <hr class="solid">-->
+    <div class="row">
+      <div class="column">
+        <h1 style="text-align: center">Shapers</h1>
+        <hr class="solid">
+          <h2 class="top3name">Radu</h2>
+        <p class="top3desc">
+          Professional 3D-designer. Over 2 years experience. I can help you design your dreams.<br>Contact me at: radushaper@gmail.com
+        </p>
+
+          <h2 class="top3name">Bianca</h2>
+        <p class="top3desc">
+          Professional 3D-designer. Over 3 years experience. Perfect for art-related products.<br>Contact me at: biancashaper2@gmail.com
+        </p>
+
+          <h2 class="top3name">Costin</h2>
+        <p class="top3desc">
+          Professional 3D-designer. Over 3 year experience. Don't have a clear enough idea of the desired product?<br>Contact me at: costinshaper3@gmail.com
+        </p>
+      </div>
+
+      <div class="column">
+        <h1 style="text-align: center">Printers</h1>
+        <hr class="solid">
+        <div *ngFor="let owner of owners">
+          <h2 class="top3name" (click)="openModal(owner)">{{owner.FirstName}} {{owner.LastName}}</h2>
+          <p class="top3desc">{{owner.Description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!--<div *ngFor="let client of clients">
+    <h3>{{client.id}}</h3>
+  </div>-->
+
+  <br />
+  <br />
+
+  <div class="footer">
+    <table>
+      <tr>
+        <td>
+          <h5 class="copyright">&#169; Copyright The Deviants</h5>
+        </td>
+        <td class="puncte">
+          ......
+        </td>
+        <td class="fb">
+          <a href="https://www.facebook.com/Unlimit3D-106213847850367" title="Facebook" target="_blank" class="fb"
+             style="font-size:15px"><i class="fa fa-facebook"></i></a>
+        </td>
+        <td class="puncte">
+          ......
+        </td>
+        <td class="insta">
+          <a href="https://www.instagram.com/deviants_ra003/" title="Instagramr" target="_blank" class="insta"
+             style="font-size:15px"><i class="fa fa-instagram"></i></a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

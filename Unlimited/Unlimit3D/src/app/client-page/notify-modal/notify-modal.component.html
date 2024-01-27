@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <input type="text" style="display:none" />
+  <h4 class="modal-title">My Orders</h4>
+  <button type="button" class="close" mat-button mat-dialog-close aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div *ngFor="let order of orders">
+    <div *ngIf="order.IDOwner == '' ">
+      <div *ngFor="let orderSub of ordersSub">
+        <div *ngIf="orderSub.OrderId == order.id ">
+          <div *ngFor="let owner of owners">
+            <div *ngIf="orderSub.IDOwner == owner.id ">
+              <div *ngFor="let poss of order.Possible">
+                <div *ngIf="orderSub.IDOwner == poss">
+                  <p>
+                    {{owner.FirstName}} {{owner.LastName}} wants to print {{order.Title}} with the price of
+                    {{orderSub.Price}}
+                    <button style="display :inline block" mat-button
+                      (click)='Rejected(order.id, poss, orderSub.id)'>&#10007;</button>
+                    <button style="background-color: #a7c584; display :inline block" mat-button
+                      (click)=' Accepted(order.id, poss, orderSub.Price, orderSub.id)'>&#10003;</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

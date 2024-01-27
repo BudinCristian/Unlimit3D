@@ -1,0 +1,87 @@
+<!--<head>
+  <link rel="stylesheet" href="signin.component.css" />
+  <meta charset="utf-8" />
+  <title>Sign-In</title>
+
+</head>
+
+<body style="text-align:center;">
+<h1>Sign In</h1>
+<br>
+<label class="container" style="font-size:110%;">Client
+  <input type="radio" checked="checked" name="radio">
+  <span class="checkmark"></span>
+</label><br>
+
+<label class="container" style="font-size:110%;">Modelator
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label><br>
+
+<label class="container" style="font-size:110%;">Printer Owner
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label><br>
+
+<form action="/action_page.php">
+  <label style="font-size:120%;" for="email">Email: </label>
+  <input type="text" id="email" name="email"><br><br>
+  <label style="font-size:120%;" for="password">Password: </label>
+  <input type="password" id="password" name="password"><br><br>
+  <input type="submit" value="Sign In">
+</form>
+<br>
+<h2>Don't have an account?</h2> <a href="url" target="_self">Create one!</a>
+  </body>-->
+
+
+  <!DOCTYPE html>
+  <html lang="en-US">
+  <body>
+    <div class="grid-item">
+      <div align=center>
+        <h2 align="center">
+          Sign-In
+        </h2>
+
+        <button [className]="logincheck=='Client' ? 'round-button2' : 'round-button'" (click)="ClientSignIn()">
+          Client
+        </button>
+        <button [className]="logincheck=='Owner' ? 'round-button2' : 'round-button'" (click)="OwnerSignIn()">
+          Printer
+        </button>
+        <table border="0" align="center" height="100px">
+          <br />
+
+          <tr>
+            <td colspan="2">
+              <input type="text" name="user" id="username" placeholder="Email" [(ngModel)]="input.UserEmail" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="password" name="psw" id="password" placeholder="Password" [(ngModel)]="input.Password" />
+            </td>
+          </tr>
+
+        </table>
+
+        <p>
+          <button class="button" (click)="onClick()">
+            Login
+          </button>
+        </p>
+        <p>
+          <button class="button" (click)="openForgotPassword()">
+            Forgot Password?
+          </button>
+        </p>
+        <p style="font-size: medium;">
+          Don't have an account?<button class="btn" style="font-size: medium;" role="button" (click)="ClickToSignUp()">
+            <B>Sign Up</B>
+          </button></p>
+      </div>
+    </div>
+  
+  </body>
+  </html>

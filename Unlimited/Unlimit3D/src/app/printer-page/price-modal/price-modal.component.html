@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <input matInput type="text" style="display:none" />
+  <h4 class="modal-title">Select price</h4>
+  <button type="button" class="close" mat-button mat-dialog-close aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body" style="margin-inline: 0;">
+  <input type="number" min="0" name="id" id="nume" placeholder="Price" [(ngModel)]="price"><br>
+  <button (click)="Accepted()" style="float: right; width: 60px; height: 40px;">Ok</button>
+</div>

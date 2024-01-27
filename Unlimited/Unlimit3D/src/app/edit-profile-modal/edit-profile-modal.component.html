@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <input type="text" style="display:none" />
+    <h4 class="modal-title">Edit description</h4>
+    <button type="button" class="close" mat-button mat-dialog-close aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <input type="text" placeholder="First Name" [(ngModel)]="input.FirstName"><br /><br />
+    <input type="text" placeholder="Last Name" [(ngModel)]="input.LastName"><br /><br />
+    <input type="text" placeholder="Phone" [(ngModel)]="input.Phone"><br /><br />
+    <input type="text" placeholder="Adress" [(ngModel)]="input.Adress"><br /><br />
+  </div>
+  
+  <div class="modal-footer" align=right>
+    <mat-dialog-actions style="font-size: 16px">
+      <button id="btn" mat-button mat-dialog-close (click)="Submit()">Submit changes</button>
+    </mat-dialog-actions>
+  </div>

@@ -1,0 +1,49 @@
+<!--<div class="modal-header">
+  <h2 mat-dialog-title>Your Shaping Order</h2>
+</div>
+
+<div style="font-size: 16px" class="modal-body">
+  <mat-form-field appearance="Legacy" style="width:400px" style="height: 150px;">
+    <mat-label>Standard form field</mat-label>
+    <textarea matInput style="height: 150px; width:400px; font-size: 16px" appearance="Legacy" placeholder="Please write a description of the wanted object"></textarea>
+  </mat-form-field>
+  <div class="modal-footer">
+    <mat-dialog-actions style="font-size: 16px">
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button mat-dialog-close>Place Order</button>
+    </mat-dialog-actions>
+  </div>
+</div>-->
+
+    <div class="modal-header">
+      <input matInput type="text" style="display:none" />
+      <h4 class="modal-title">Your Order</h4>
+      <button type="button" class="close" mat-button mat-dialog-close aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body3">
+      <mat-form-field appearance="Legacy" style="width:400px" style="height: 150px;">
+         <textarea [(ngModel)]="orderTitle" matInput matSelect style="height: 150px; width:400px; font-size: 16px" appearance="Legacy" placeholder="Please write a title"></textarea>
+       </mat-form-field>
+    </div>
+    <div class="modal-body">
+      <mat-form-field appearance="Legacy" style="width:400px" style="height: 150px;">
+        <textarea [(ngModel)]="orderDetail" matInput matSelect style="height: 150px; width:400px; font-size: 16px" appearance="Legacy" placeholder="Please write a description of the wanted object"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="modal-body2">
+    <h4>Select a file for upload:</h4>
+    <input type="file" (change)="upload($event)" accept=".png,.jpg,.stl" />
+    <div class="progress" *ngIf="uploadProgress$ | async as progress">
+      <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': progress + '%' }"></div>
+   </div>
+   <h5>progress: {{ uploadProgress$ | async }}% Complete</h5>
+   </div>
+
+    <div class="modal-footer" align=right>
+      <mat-dialog-actions style="font-size: 16px">
+        <button mat-button (click)='onClick()'>Place Order</button>
+      </mat-dialog-actions>
+    </div>

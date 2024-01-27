@@ -1,0 +1,30 @@
+  .checked {
+    color: orange;
+  }
+
+  .column {
+    float: left;
+    width: 47%;
+    margin: 1%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+  }
+
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button2 {background-color: #555555;} /* Black */

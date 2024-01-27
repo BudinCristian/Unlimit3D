@@ -1,0 +1,9 @@
+.modal-header {
+  background-color: #a7c584;
+}
+
+.modal-body {
+  background-color: #eae3c0;
+  height: 90%;
+  text-align: center;
+}

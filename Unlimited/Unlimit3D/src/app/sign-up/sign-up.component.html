@@ -1,0 +1,185 @@
+<!--<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link rel="stylesheet" href="sign-up.component.css" />
+  <meta charset="utf-8" />
+  <title>Sign-Up</title>
+
+</head>
+
+<body>
+
+  <h1>
+    Unlimit3d
+  </h1>
+
+
+  <h2 align="center">
+    Sign-Up here
+  </h2> <br />
+
+        <div class="radiomessage">
+          <input type="radio" id="printer" name="signup_id" value="printer"  (click)="OwnerSignUp()"/>
+          <label for="printer">I have a 3D printer</label><br><br />
+
+          <input type="radio" id="designer" name="signup_id" value="designer" (click)="ShaperSignUp()" />
+          <label for="designer">I am a 3D designer</label><br><br />
+
+          <input type="radio" id="client" name="signup_id" value="client" (click)="ClientSignUp()"/>
+          <label for="client">I am a client</label><br><br />
+         </div>
+
+ <div class=" register">
+
+   <hr>
+
+   <div class="input">
+    <label for="username"><b>Username</b></label>
+    <input type="text" name="user" id="username" placeholder="Alege un Username" [(ngModel)]="input.Username">
+   </div>
+
+   <div class="input">
+    <label for="username"><b>First Name</b></label>
+    <input type="text" name="user" id="username" placeholder="First Name" [(ngModel)]="input.FirstName">
+   </div>
+
+   <div class="input">
+    <label for="username"><b>Last Name</b></label>
+    <input type="text" name="user" id="username" placeholder="Last Name" [(ngModel)]="input.LastName">
+   </div>
+
+   <div class="input">
+    <label for="email"><b>Adresă de Email</b></label>
+     <input type="email" name="email" id="email" placeholder="Introdu adresa de Email" [(ngModel)]="input.Email">
+   </div>
+
+   <div class="input">
+    <label for="password"><b>Parolă</b></label>
+     <input type="password" name="psw" id="password" placeholder="Introdu o parolă" [(ngModel)]="input.Password">
+   </div>
+
+
+   <div class="input">
+    <label for="conf_psw"><b>Confirmare Parolă</b></label>
+     <input type="password" name="conf_psw" id="conf_psw" placeholder="Reintrodu parola" [(ngModel)]="confirmedPassword">
+   </div>
+
+
+   <div class="input">
+    <label for="adress"><b>Adresă</b></label>
+     <input type="text" name="adress" id="adress" placeholder="oraș/județ" [(ngModel)]="input.Adress">
+   </div>
+
+
+   <div class="input">
+    <label for="phone"><b>Număr de telefon</b></label>
+     <input type="text" name="phone" id="phone" [(ngModel)]="input.Phone">
+   </div>
+   <app-re-captcha></app-re-captcha>
+   <hr />
+   <button type="button" (click)="onClick()"> Confirm</button>
+ </div>
+
+</body>
+</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+  <div class="grid-item">
+    <div align=center>
+      <h2 align="center">
+        Sign-Up
+      </h2>
+      <!--<button class="round-button">
+    Client
+  </button>
+  <button class="round-button">
+    Printer
+  </button>
+  <button class="round-button">
+    Designer
+  </button>-->
+      <button [className]="signupCheck=='Client' ? 'round-button2' : 'round-button'" (click)="ClientSignUp()">
+        Client
+      </button>
+      <button [className]="signupCheck=='Owner' ? 'round-button2' : 'round-button'" (click)="OwnerSignUp()">
+        Printer
+      </button>
+
+      <!--<input type="radio" id="printer" name="signup_id" value="printer" (click)="OwnerSignUp()" />
+      <label for="printer">I have a 3D printer</label><br />
+
+      <input type="radio" id="client" name="signup_id" value="client" (click)="ClientSignUp()" />
+      <label for="client">I am a client</label><br>-->
+
+      <table border="0" align="center" height="100px">
+        <br />
+
+        <tr>
+          <td colspan="2">
+            <label for="username"><b>Username</b></label>
+            <input type="text" name="user" id="username" placeholder="Username" [(ngModel)]="input.Username">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label for="username"><b>First Name</b></label>
+            <input type="text" name="user" id="username" placeholder="First Name" [(ngModel)]="input.FirstName">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label for="username"><b>Last Name</b></label>
+            <input type="text" name="user" id="username" placeholder="Last Name" [(ngModel)]="input.LastName">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label for="email"><b>E-mail</b></label>
+            <input type="email" name="email" id="email" placeholder="E-mail" [(ngModel)]="input.Email">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label for="adress"><b>Adress</b></label>
+            <input type="text" name="adress" id="adress" placeholder="City" [(ngModel)]="input.Adress">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="phone"><b>Phone number</b></label>
+            <input type="text" name="phone" id="phone" placeholder="Phone" [(ngModel)]="input.Phone">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label for="password"><b>Password</b></label>
+            <input type="password" name="psw" id="password" placeholder="Password" [(ngModel)]="input.Password">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label for="conf_psw"><b>Confirm Password</b></label>
+            <input type="password" name="conf_psw" id="conf_psw" placeholder="Confirm Password" [(ngModel)]="confirmedPassword">
+          </td>
+        </tr>
+
+      </table>
+
+      <app-re-captcha></app-re-captcha>
+
+      <p>
+        <button class="button" type="button" (click)="onClick()">
+          Sign Up
+        </button>
+      </p>
+
+    </div>
+  </div>
+</body>
+</html>
